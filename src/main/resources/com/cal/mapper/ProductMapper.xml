@@ -6,4 +6,11 @@
 	<insert id = "productRegister">
 		insert into products (name, price, category) values (#{name}, #{price}, #{category}) 
 	</insert>
+	<select id = "product" resultType = "com.cal.dto.ProductDto">
+		select * from products where id = #{id}
+	</select>
+	<update id= "productModify">
+		update products set name = #{name}, price = #{price}, category = #{category} where id = #{id}
+	</update>
+	
 </mapper>

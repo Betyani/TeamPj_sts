@@ -20,5 +20,14 @@ public class ProductServiceImpl implements ProductService {
 		mapper.productRegister(dto);
 	};
 	
-	
+	@Override
+	public ProductDto product(int id) {
+		return mapper.product(id);
+	}
+
+	@Override
+	public void productModify(ProductDto dto) {
+		mapper.productModify(dto);
+	}
+
 }

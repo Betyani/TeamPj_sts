@@ -4,4 +4,6 @@ import com.cal.dto.ProductDto;
 
 public interface ProductService {
 	public void productRegister(ProductDto dto);
+	public ProductDto product(int id);
+	public void productModify(ProductDto dto);
 }

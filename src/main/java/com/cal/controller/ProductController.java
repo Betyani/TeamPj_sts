@@ -2,6 +2,7 @@ package com.cal.controller;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cal.dto.ProductDto;
@@ -24,5 +25,17 @@ public class ProductController {
 		log.info("받아온 상품: " + dto);
 	};
 	
+	@RequestMapping("/product")
+	public ProductDto product(@RequestParam("id") int id) {
+		ProductDto product = service.product(id);
+		log.info("보낸 상품:" + product);
+		return product;
+	}
+	
+	@RequestMapping("/modify")
+	public void productModify(@RequestBody ProductDto dto) {
+		service.productModify(dto);
+		log.info("수정된 상품" + dto);
+	}
 	
 }
