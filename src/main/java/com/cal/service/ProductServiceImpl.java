@@ -30,4 +30,9 @@ public class ProductServiceImpl implements ProductService {
 		mapper.productModify(dto);
 	}
 
+	@Override
+	public void productDelete(int id) {
+		mapper.productDelete(id);
+	}
+	
 }

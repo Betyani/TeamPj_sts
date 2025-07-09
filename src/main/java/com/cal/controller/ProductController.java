@@ -38,4 +38,10 @@ public class ProductController {
 		log.info("수정된 상품" + dto);
 	}
 	
+	@RequestMapping("/delete")
+	public void productDelete(@RequestParam("id") int id) {
+		service.productDelete(id);
+		log.info("삭제할 상품id: " + id);
+	}
+	
 }

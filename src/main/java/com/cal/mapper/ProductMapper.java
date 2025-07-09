@@ -6,4 +6,6 @@ public interface ProductMapper {
 	public void productRegister(ProductDto dto);
 	public ProductDto product(int id);
 	public void productModify(ProductDto dto);
+	public void productDelete(int id);
+	
 }

@@ -9,8 +9,10 @@
 	<select id = "product" resultType = "com.cal.dto.ProductDto">
 		select * from products where id = #{id}
 	</select>
-	<update id= "productModify">
+	<update id = "productModify">
 		update products set name = #{name}, price = #{price}, category = #{category} where id = #{id}
 	</update>
-	
+	<delete id = "productDelete">
+		delete from products where id = #{id}	
+	</delete>
 </mapper>
