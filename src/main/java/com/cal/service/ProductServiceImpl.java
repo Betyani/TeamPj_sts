@@ -1,5 +1,7 @@
 package com.cal.service;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Service;
 
 import com.cal.dto.ProductDto;
@@ -33,6 +35,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void productDelete(int id) {
 		mapper.productDelete(id);
+	}
+	
+	@Override
+	public ArrayList<ProductDto> productList() {
+		return mapper.productList();
 	}
 	
 }
