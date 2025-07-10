@@ -20,7 +20,7 @@
 		delete from products where id = #{id}	
 	</delete>
 	<!-- 상품 조회 -->
-	<select id = "productList">
+	<select id = "productList" resultType = "com.cal.dto.ProductDto">
 		select * from products
 	</select>
 </mapper>

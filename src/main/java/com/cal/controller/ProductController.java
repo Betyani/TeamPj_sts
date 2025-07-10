@@ -56,6 +56,7 @@ public class ProductController {
 	@RequestMapping("/list")
 	public ArrayList<ProductDto> productList() {
 		ArrayList<ProductDto> products = service.productList();
+		log.info(products);
 		return products;
 	}
 	
