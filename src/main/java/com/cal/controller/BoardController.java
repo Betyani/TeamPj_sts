@@ -28,7 +28,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/list")
-	public List<BoardDto> boardList(@RequestParam("productid") int productId){
+	public List<BoardDto> boardList(@RequestParam("productId") int productId){
 		List<BoardDto> content = service.boardList(productId);
 		log.info("받아온 리뷰: " + content);
 		return content;
