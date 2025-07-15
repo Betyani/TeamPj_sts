@@ -1,6 +1,6 @@
 package com.cal.service;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -38,7 +38,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
-	public ArrayList<ProductDto> productList() {
+	public List<ProductDto> productList() {
 		return mapper.productList();
 	}
 	

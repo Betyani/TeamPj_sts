@@ -1,5 +1,7 @@
 package com.cal.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.cal.dto.BoardDto;
@@ -16,8 +18,17 @@ public class BoardServiceImpl implements BoardService {
 	
 	private BoardMapper mapper;
 	
+	@Override
 	public void boardRegister(BoardDto dto) {
 		mapper.boardRegister(dto);
 		log.info("받아온 리뷰:" + dto);
 	}
+	
+	@Override
+	public List<BoardDto> boardList(int productId) {
+		List<BoardDto> content = mapper.boardList(productId);
+		log.info("받아온 상품 번호" + productId);
+		return content;
+	}
+	
 }

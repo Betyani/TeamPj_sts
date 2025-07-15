@@ -1,6 +1,6 @@
 package com.cal.controller;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,8 +54,8 @@ public class ProductController {
 	
 // 상품 전체 조회	
 	@RequestMapping("/list")
-	public ArrayList<ProductDto> productList() {
-		ArrayList<ProductDto> products = service.productList();
+	public List<ProductDto> productList() {
+		List<ProductDto> products = service.productList();
 		log.info(products);
 		return products;
 	}
