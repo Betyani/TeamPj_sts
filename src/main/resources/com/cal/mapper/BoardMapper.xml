@@ -10,5 +10,11 @@
 	<select id="boardList" resultType="com.cal.dto.BoardDto">
 		select * from board where productId = #{productId} order by id desc
 	</select>
+	<update id="boardModify">
+		update board set title = #{title}, content = #{content} where id = #{id} 
+	</update>
+	<select id="review" resultType="com.cal.dto.BoardDto">
+		select * from board where id = #{id}
+	</select>
 	
 </mapper>

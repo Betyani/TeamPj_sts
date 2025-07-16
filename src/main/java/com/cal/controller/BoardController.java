@@ -34,5 +34,17 @@ public class BoardController {
 		return content;
 	}
 	
+	@RequestMapping("/modify")
+	public void boardModify(@RequestBody BoardDto dto) {
+		service.boardModify(dto);
+		log.info("수정된 내용: " + dto);
+	}
+	
+	@RequestMapping("/review")
+	public BoardDto review(int id) {
+		BoardDto review = service.review(id);
+		log.info("받아온 리뷰: " + review);
+		return review;
+	}
 	
 }

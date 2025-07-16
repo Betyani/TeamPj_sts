@@ -30,5 +30,15 @@ public class BoardServiceImpl implements BoardService {
 		log.info("받아온 상품 번호" + productId);
 		return content;
 	}
+
+	@Override
+	public void boardModify(BoardDto dto) {
+		mapper.boardModify(dto);
+	}
+	
+	@Override
+	public BoardDto review(int id) {
+		return mapper.review(id);
+	}
 	
 }
