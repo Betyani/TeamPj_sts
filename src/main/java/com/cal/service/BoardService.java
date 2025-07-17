@@ -9,4 +9,5 @@ public interface BoardService {
 	public List<BoardDto> boardList(int productId);
 	public void boardModify(BoardDto dto);
 	public BoardDto review(int id);
+	public void boardDelete(int id);
 }

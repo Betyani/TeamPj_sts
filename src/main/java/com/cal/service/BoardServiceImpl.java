@@ -21,13 +21,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void boardRegister(BoardDto dto) {
 		mapper.boardRegister(dto);
-		log.info("받아온 리뷰:" + dto);
 	}
 	
 	@Override
 	public List<BoardDto> boardList(int productId) {
 		List<BoardDto> content = mapper.boardList(productId);
-		log.info("받아온 상품 번호" + productId);
 		return content;
 	}
 
@@ -39,6 +37,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BoardDto review(int id) {
 		return mapper.review(id);
+	}
+	
+	@Override
+	public void boardDelete(int id) {
+		mapper.boardDelete(id);
 	}
 	
 }

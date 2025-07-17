@@ -25,6 +25,7 @@ public class BoardController {
 	@RequestMapping("/register")
 	public void boardRegister(@RequestBody BoardDto dto) {
 		service.boardRegister(dto);
+		log.info("쓴 리뷰: " + dto);
 	}
 	
 	@RequestMapping("/list")
@@ -45,6 +46,12 @@ public class BoardController {
 		BoardDto review = service.review(id);
 		log.info("받아온 리뷰: " + review);
 		return review;
+	}
+	
+	@RequestMapping("/delete")
+	public void boardDelete(@RequestParam("id") int id) {
+		service.boardDelete(id);
+		log.info("삭제할 리뷰 번호: " + id);
 	}
 	
 }
