@@ -5,7 +5,7 @@
 <mapper namespace="com.cal.mapper.ProductMapper">
 	<!-- 상품 등록 -->
 	<insert id = "productRegister">
-		insert into products (name, price, category) values (#{name}, #{price}, #{category}) 
+		insert into products (name, price, category, imageUrl) values (#{name}, #{price}, #{category}, #{imageUrl}) 
 	</insert>
 	<!-- 상품 1개 조회 -->
 	<select id = "product" resultType = "com.cal.dto.ProductDto">
