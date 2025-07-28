@@ -59,18 +59,16 @@ public class ProductController {
 	@RequestMapping("/list")
 	public Map<String, Object> productList(@RequestParam(defaultValue = "1", value = "page") int page) {
 		ListDto dto = new ListDto();
-		dto.setPage(page);
-		
 		int totalCount = service.getTotalCount();
 		dto.setTotalCount(totalCount);
-		
-		int totalPage = dto.getTotalPage();
+		dto.setTotalPage();
+		dto.setPage(page);
 		
 		List<ProductDto> products = service.productList(dto);
 		log.info(products);
 		Map<String, Object> result = new HashMap<>();
 		result.put("products", products);
-		result.put("totalPage", totalPage);
+		result.put("pageInfo", dto);
 		
 		return result;
 	}

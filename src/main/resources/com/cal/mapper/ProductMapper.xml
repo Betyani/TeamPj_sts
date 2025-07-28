@@ -25,7 +25,7 @@
 	</select>
 	<!-- 페이징 처리 상품 조회 -->
 	<select id = "productList" resultType = "com.cal.dto.ProductDto">
-		select * from products order by id desc limit #{startIndex}, #{listAmount}
+		select * from products order by id desc limit #{startIndex}, #{pageSize}
 	</select>
 	
 	
