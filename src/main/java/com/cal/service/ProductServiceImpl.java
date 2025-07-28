@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.cal.dto.ListDto;
 import com.cal.dto.ProductDto;
 import com.cal.mapper.ProductMapper;
 
@@ -38,8 +39,14 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
-	public List<ProductDto> productList() {
-		return mapper.productList();
+	public int getTotalCount() {
+		return mapper.getTotalCount();
+	}
+	
+	
+	@Override
+	public List<ProductDto> productList(ListDto dto) {
+		return mapper.productList(dto);
 	}
 	
 }

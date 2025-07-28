@@ -1,12 +1,15 @@
 package com.cal.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cal.dto.ListDto;
 import com.cal.dto.ProductDto;
 import com.cal.service.ProductService;
 
@@ -54,10 +57,22 @@ public class ProductController {
 	
 // 상품 전체 조회	
 	@RequestMapping("/list")
-	public List<ProductDto> productList() {
-		List<ProductDto> products = service.productList();
+	public Map<String, Object> productList(@RequestParam(defaultValue = "1", value = "page") int page) {
+		ListDto dto = new ListDto();
+		dto.setPage(page);
+		
+		int totalCount = service.getTotalCount();
+		dto.setTotalCount(totalCount);
+		
+		int totalPage = dto.getTotalPage();
+		
+		List<ProductDto> products = service.productList(dto);
 		log.info(products);
-		return products;
+		Map<String, Object> result = new HashMap<>();
+		result.put("products", products);
+		result.put("totalPage", totalPage);
+		
+		return result;
 	}
 	
 }

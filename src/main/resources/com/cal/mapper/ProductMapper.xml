@@ -19,8 +19,15 @@
 	<delete id = "productDelete">
 		delete from products where id = #{id}	
 	</delete>
-	<!-- 상품 조회 -->
-	<select id = "productList" resultType = "com.cal.dto.ProductDto">
-		select * from products
+	<!-- 전체 상품 개수 조회 -->
+	<select id= "getTotalCount" resultType = "int">
+		select count(*) from products
 	</select>
+	<!-- 페이징 처리 상품 조회 -->
+	<select id = "productList" resultType = "com.cal.dto.ProductDto">
+		select * from products order by id desc limit #{startIndex}, #{listAmount}
+	</select>
+	
+	
+	
 </mapper>

@@ -75,7 +75,7 @@ public class ImageController {
 
             // 정상적으로 존재하는 파일일 경우 200 OK + Content-Type 헤더 + 파일 본문을 응답
             return ResponseEntity.ok()
-                    .contentType(MediaType.parseMediaType(contentType))
+					.contentType(MediaType.parseMediaType(contentType))
                     .body(resource);
 
         } catch (IOException e) {
