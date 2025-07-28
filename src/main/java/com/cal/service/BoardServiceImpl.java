@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.cal.dto.BoardDto;
+import com.cal.dto.ListDto;
 import com.cal.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
@@ -24,8 +25,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public List<BoardDto> boardList(int productId) {
-		List<BoardDto> content = mapper.boardList(productId);
+	public List<BoardDto> boardList(ListDto dto) {
+		List<BoardDto> content = mapper.boardList(dto);
 		return content;
 	}
 
@@ -42,6 +43,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void boardDelete(int id) {
 		mapper.boardDelete(id);
+	}
+	
+	@Override
+	public int getTotalCount() {
+		return mapper.getTotalCount();
 	}
 	
 }

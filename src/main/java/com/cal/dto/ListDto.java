@@ -4,6 +4,8 @@ import lombok.Data;
 
 @Data
 public class ListDto {
+	
+	//produtList 페이징 처리용
 	private int page;
 	private int startIndex;
 	private int pageSize = 8;
@@ -14,6 +16,9 @@ public class ListDto {
 	private int endPage;
 	private boolean hasPrev;
 	private boolean hasNext;
+	
+	//boardList 상품 연결용
+	private int productId;
 	
 	public void setTotalPage() {
 		this.totalPage = (int) Math.ceil((double) totalCount / pageSize);
