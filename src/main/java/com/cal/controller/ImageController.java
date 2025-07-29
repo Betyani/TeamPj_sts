@@ -14,7 +14,9 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,7 +31,7 @@ public class ImageController {
 	
 	private final String uploadDir = "C:/projectImage/";
 
-    @RequestMapping("/upload")
+    @PostMapping("/upload")
     public Map<String, String> upload(@RequestParam("file") MultipartFile file) {
         String fileName = UUID.randomUUID() + "_" + file.getOriginalFilename();
         File saveFile = new File(uploadDir + fileName);
@@ -48,7 +50,7 @@ public class ImageController {
     }
     
  // HTTP 요청 중 /image/파일명 으로 들어온 요청을 처리하는 메서드
-    @RequestMapping("/load/{imageUrl:.+}")
+    @GetMapping("/load/{imageUrl:.+}")
     public ResponseEntity<Resource> getImage(@PathVariable String imageUrl) {
         try {
             // 자바의 NIO를 사용하여 실제 이미지 파일 경로를 생성

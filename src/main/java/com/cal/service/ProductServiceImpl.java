@@ -38,9 +38,10 @@ public class ProductServiceImpl implements ProductService {
 		mapper.productDelete(id);
 	}
 	
+	
 	@Override
-	public int getTotalCount() {
-		return mapper.getTotalCount();
+	public int getTotalCount(ListDto dto) {
+		return mapper.getTotalCount(dto);
 	}
 	
 	

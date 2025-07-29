@@ -4,30 +4,68 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cal.mapper.ProductMapper">
 	<!-- 상품 등록 -->
-	<insert id = "productRegister">
-		insert into products (name, price, category, imageUrl) values (#{name}, #{price}, #{category}, #{imageUrl}) 
+	<insert id="productRegister">
+		insert into products (name, price, category,imageUrl) values (#{name}, #{price}, #{category}, #{imageUrl})
 	</insert>
 	<!-- 상품 1개 조회 -->
-	<select id = "product" resultType = "com.cal.dto.ProductDto">
+	<select id="product" resultType="com.cal.dto.ProductDto">
 		select * from products where id = #{id}
 	</select>
 	<!-- 상품 수정 -->
-	<update id = "productModify">
+	<update id="productModify">
 		update products set name = #{name}, price = #{price}, category = #{category} where id = #{id}
 	</update>
 	<!-- 상품 삭제 -->
-	<delete id = "productDelete">
-		delete from products where id = #{id}	
+	<delete id="productDelete">
+		delete from products where id = #{id}
 	</delete>
-	<!-- 전체 상품 개수 조회 -->
-	<select id= "getTotalCount" resultType = "int">
+	
+	<!-- 검색 조건(category, keyword)이 있을 경우 조건에 맞는 상품 수를 반환 -->
+	<select id="getTotalCount" resultType="int">
 		select count(*) from products
+		<where>
+			<!-- 카테고리가 있을 경우 조건 추가 -->
+			<if test="category != null and category != ''">
+				category = #{category}
+			</if>
+
+			<if test="keyword != null and keyword != ''">
+				<!-- category 조건이 있을 경우 AND 붙여줌 -->
+				<if test="category != null and category != ''">
+					AND
+				</if>
+				name LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+		</where>
 	</select>
 	<!-- 페이징 처리 상품 조회 -->
-	<select id = "productList" resultType = "com.cal.dto.ProductDto">
-		select * from products order by id desc limit #{startIndex}, #{pageSize}
+	<select id="productList" resultType="com.cal.dto.ProductDto">
+		select * from products
+		<where>
+			<!-- 카테고리가 있을 경우 조건 추가 -->	
+			<if test="category != null and category != ''">
+				category = #{category}
+			</if>
+			<!-- 키워드가 있을 경우 조건 추가 -->
+			<if test="keyword != null and keyword != ''">
+				<!-- category 조건이 있을 경우 AND 붙여줌 -->
+				<if test="category != null and category != ''">
+					AND
+				</if>
+				name LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+		<!-- 정렬 기준: 최신순 또는 오래된순 -->
+		</where>
+		order by id
+		<choose>
+			<when test="desc == true">
+				desc
+			</when>
+			<otherwise>
+				asc
+			</otherwise>
+		</choose>
+			limit #{startIndex}, #{pageSize}
 	</select>
-	
-	
 	
 </mapper>

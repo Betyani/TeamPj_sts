@@ -17,9 +17,16 @@ public class ListDto {
 	private boolean hasPrev;
 	private boolean hasNext;
 	
+	//productList 검색 및 정렬용
+	private String category;
+	private String keyword;
+	private boolean desc = true;
+
 	//boardList 상품 연결용
 	private int productId;
 	
+	
+	//올림 처리(ceil)
 	public void setTotalPage() {
 		this.totalPage = (int) Math.ceil((double) totalCount / pageSize);
 	}
@@ -31,6 +38,13 @@ public class ListDto {
 		this.endPage = Math.min(startPage + blockSize - 1, totalPage);
 		this.hasPrev = startPage > 1;
 		this.hasNext = endPage < totalPage;
+	}
+	
+	//공백 제거
+	public void setKeyword() {
+		if(keyword != null) {
+			this.keyword = keyword.trim();
+		}
 	}
 	
 	
