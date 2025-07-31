@@ -13,7 +13,7 @@
 	</select>
 	<!-- 상품 수정 -->
 	<update id="productModify">
-		update products set name = #{name}, price = #{price}, category = #{category} where id = #{id}
+		update products set name = #{name}, price = #{price}, category = #{category}, imageUrl = #{imageUrl} where id = #{id}
 	</update>
 	<!-- 상품 삭제 -->
 	<delete id="productDelete">

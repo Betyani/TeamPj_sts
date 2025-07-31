@@ -34,6 +34,13 @@ public class ImageController {
     @PostMapping("/upload")
     public Map<String, String> upload(@RequestParam("file") MultipartFile file) {
         String fileName = UUID.randomUUID() + "_" + file.getOriginalFilename();
+        
+        // 저장 디렉토리 객체 생성
+        File directory = new File(uploadDir);
+        if (!directory.exists()) {
+            directory.mkdirs();  // 폴더가 없으면 자동 생성 (하위 폴더까지)
+        }
+        
         File saveFile = new File(uploadDir + fileName);
         try {
         file.transferTo(saveFile); // 파일 저장
