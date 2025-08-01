@@ -15,7 +15,7 @@ public class MemberDto {
 		    regexp = "^[a-zA-Z0-9]{5,20}$",
 		    message = "아이디는 영문자와 숫자로만 5~20자 입력 가능합니다."
 		)
-	private String userId;
+	private String id;
 	
 	@NotBlank
 	@Pattern(
@@ -40,5 +40,5 @@ public class MemberDto {
 		    regexp = "^[가-힣a-zA-Z0-9]{2,10}$",
 		    message = "닉네임은 한글, 영문, 숫자로 2~10자 이내여야 합니다."
 		)
-	private String nickName;
+	private String nickname;
 }

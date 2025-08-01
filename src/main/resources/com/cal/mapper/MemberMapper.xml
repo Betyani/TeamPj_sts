@@ -5,6 +5,6 @@
 <mapper namespace="com.cal.mapper.MemberMapper">
 	
 	<insert id="signUp">
-		insert into member (userId, password, name, email, nickName) values (#{userId}, #{password}, #{name}, #{email}, #{nickName})
+		insert into member (id, password, name, email, nickname) values (#{id}, #{password}, #{name}, #{email}, #{nickname})
 	</insert>
 </mapper>
