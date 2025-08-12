@@ -17,4 +17,21 @@ public class MemberServiceImpl implements MemberService {
 	public void signUp(MemberDto dto) {
 		mapper.signUp(dto);
 	}
+	
+	@Override
+	public boolean checkId(String id) {
+		return mapper.checkId(id) == 0;
+	}
+	
+	@Override
+	public boolean checkEmail(String email) {
+		return mapper.checkEmail(email) == 0;
+	}
+	
+	@Override
+	public boolean checkNickname(String nickname) {
+		return mapper.checkNickname(nickname) == 0;
+	}
+	
+	
 }

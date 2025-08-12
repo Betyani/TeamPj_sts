@@ -4,7 +4,25 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cal.mapper.MemberMapper">
 	
+	<!-- 회원 가입 -->
 	<insert id="signUp">
 		insert into member (id, password, name, email, nickname) values (#{id}, #{password}, #{name}, #{email}, #{nickname})
 	</insert>
+	
+	<!-- id 중복체크 -->
+	<select id="checkId" resultType="int">
+		select count(*) from member where id = #{id}
+	</select>
+
+	<!-- email 중복체크 -->
+	<select id="checkEmail" resultType="int">
+		select count(*) from member where email = #{email}
+	</select>
+
+	<!-- nickname 중복체크 -->
+	<select id="checkNickname" resultType="int">
+		select count(*) from member where nickname = #{nickname}
+	</select>
+	
+	
 </mapper>

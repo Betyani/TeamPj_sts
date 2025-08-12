@@ -3,9 +3,11 @@ package com.cal.controller;
 import javax.validation.Valid;
 
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cal.dto.MemberDto;
@@ -34,4 +36,22 @@ public class MemberController {
 
 		service.signUp(dto);
 	}
+	
+	@GetMapping("/check-id")
+	public boolean checkId(@RequestParam String id) {
+		return service.checkId(id);
+	}
+
+	@GetMapping("/check-email")
+	public boolean checkEmail(@RequestParam String email) {
+		return service.checkEmail(email);
+	}
+	
+	@GetMapping("/check-nickname")
+	public boolean checkNickname(@RequestParam String nickname) {
+		return service.checkNickname(nickname);
+	}
+	
+	
+	
 }
